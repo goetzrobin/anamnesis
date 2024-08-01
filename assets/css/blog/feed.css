@@ -1,11 +1,12 @@
 .post-feed .post {
     display: flex;
     align-items: flex-start;
+    flex-direction: column;
 }
 
 .post-feed .post-media {
     flex-shrink: 0;
-    width: 500px;
+    width: 100%;
     margin-right: 40px;
 }
 
@@ -61,8 +62,8 @@
 
 
 /* MASONRY */
-
 .post-feed {
+    width: 100%;
     max-width: 1250px;
     margin: 0 auto 48px;
 }

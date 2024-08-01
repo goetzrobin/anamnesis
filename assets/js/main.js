@@ -1,12 +1,10 @@
 var html = $('html');
-var body = $('body');
 var timeout;
 var st = 0;
 
 $(function () {
     'use strict';
     tagFeed();
-    parallax();
     loadMore();
     offCanvas();
     feed();
@@ -62,21 +60,6 @@ function tagFeed() {
                 slideBy: count
             },
         }
-    });
-}
-
-function parallax() {
-    var image = $('.jarallax-img');
-    if (!image) return;
-
-    var options = {
-        disableParallax: /iPad|iPhone|iPod|Android/,
-        disableVideo: /iPad|iPhone|iPod|Android/,
-        speed: 0.1,
-    };
-
-    image.imagesLoaded(function () {
-        image.parent().jarallax(options).addClass('initialized');
     });
 }
 

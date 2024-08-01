@@ -48,11 +48,6 @@
     margin: auto;
 }
 
-.single-post .post-media .post-title,
-.single-post .post-media .post-meta {
-    color: var(--white-color);
-}
-
 .single-post .post-media .post-meta {
     margin-bottom: -20px;
     opacity: 0.7;

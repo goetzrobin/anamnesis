@@ -17,21 +17,6 @@
                 {{/primary_tag}}
 
                 <h1 class="post-title">{{title}}</h1>
-
-                <div class="post-meta">
-                    <span class="post-meta-item post-meta-date">
-                        <time datetime="{{date format="YYYY-MM-DD"}}">{{date published_at}}</time>
-                    </span>
-                    <span class="post-meta-item post-meta-length">{{reading_time}}</span>
-                    {{#if featured}}
-                        <span class="post-meta-featured">
-                            {{> "icons/star"}}
-                        </span>
-                    {{/if}}
-                    {{#if @site.comments_enabled}}
-                        {{comment_count class="post-meta-item"}}
-                    {{/if}}
-                </div>
             </header>
         {{/if}}
         <div class="post-content gh-content gh-canvas">
