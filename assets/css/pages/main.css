@@ -28,32 +28,74 @@
     color: #fff;
     text-align: center;
     padding: 20px;
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     max-width: 1250px;
     pointer-events: none;
     animation: slideFadeInOut 6s ease-in-out forwards; /* Adjust duration and timing as needed */
 }
 
+@media (min-width: 767px) {
+    .main-description {
+        font-size: 2.5rem;
+    }
+}
+
 .main-intro {
-padding: 48px;
+    padding: 48px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
+
 .main-intro-title {
-text-transform: uppercase;
+    text-transform: uppercase;
     font-size: 2rem;
 }
+
 .main-into-latest {
     font-size: 4rem;
 }
+
 .main-post-feed {
     padding: 12px;
     max-width: 1250px;
-    columns: 300px 2;
     margin: 0 auto 48px;
 }
+
+.item {
+    width: 100%;
+}
+
+@media (min-width: 767px) {
+    .main-post-feed {
+        display: flex;
+        flex-flow: column wrap;
+        align-content: space-between;
+        /* Your container needs a fixed height, and it
+         * needs to be taller than your tallest column. */
+        height: 1000px;
+    }
+
+    .item {
+        width: 32%;
+        margin-bottom: 2%; /* Optional */
+    }
+    /* Re-order items into 3 rows */
+    .item:nth-child(3n+1) { order: 1; }
+    .item:nth-child(3n+2) { order: 2; }
+    .item:nth-child(3n)   { order: 3; }
+
+    /* Force new columns */
+    .container::before,
+    .container::after {
+        content: "";
+        flex-basis: 100%;
+        width: 0;
+        order: 2;
+    }
+}
+
 
 .main-post-feed .post-title {
     padding: 0 12px;
