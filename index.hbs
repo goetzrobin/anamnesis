@@ -1,44 +1,46 @@
 {{!< default}}
 
 <div class="content-area">
-<main class="site-main">
-    <h1 class="main-title">{{@site.title}}</h1>
-    <p class="main-description">{{@site.description}}</p>
+    <main class="site-main">
+        <h1 class="main-title">{{@site.title}}</h1>
+        <p class="main-description">{{@site.description}}</p>
 
-    {{#get "tags" limit="all"}}
-    <div class="tag-feed owl" data-count="{{pagination.total}}">
+        {{#get "tags" limit="all"}}
+            <div class="tag-feed owl" data-count="{{pagination.total}}">
 
-        {{#foreach tags}}
-        <div class="tag u-placeholder">
-            <img class="tag-image u-object-fit" src="{{#if feature_image}}{{img_url feature_image}}{{else}}{{@site.cover_image}}{{/if}}" alt="{{name}}">
-            <div class="tag-content">
-                <div class="tag-essere">essere</div>
-                <h2 class="tag-name">{{name}}</h2>
+                {{#foreach tags}}
+                    <div class="tag u-placeholder">
+                        <img class="tag-image u-object-fit"
+                             src="{{#if feature_image}}{{img_url feature_image}}{{else}}{{@site.cover_image}}{{/if}}"
+                             alt="{{name}}">
+                        <div class="tag-content">
+                            <div class="tag-essere">essere</div>
+                            <h2 class="tag-name">{{name}}</h2>
 
-                {{#if description}}
-                    <div class="tag-description">
-                        {{description}}
+                            {{#if description}}
+                                <div class="tag-description">
+                                    {{description}}
+                                </div>
+                            {{/if}}
+                        </div>
+                        <a class="u-permalink" href="{{url}}"></a>
                     </div>
-                {{/if}}
+                {{/foreach}}
+
             </div>
-            <a class="u-permalink" href="{{url}}"></a>
+        {{/get}}
+
+        <div class="main-intro">
+            <h2 class="main-intro-title">{{@site.title}}</h2>
+            <p class="main-into-latest">Latest Stories</p>
         </div>
-        {{/foreach}}
 
-    </div>
-    {{/get}}
+        <div class="main-post-feed">
+            <div class="feed-sizer"></div>
+            {{#foreach posts}}
+                {{> "loop"}}
+            {{/foreach}}
+        </div>
 
-    <div class="main-intro">
-        <h2 class="main-intro-title">{{@site.title}}</h2>
-        <p class="main-into-latest">Latest Stories</p>
-    </div>
-
-
-    <div class="main-post-feed">
-        {{#foreach posts}}
-            {{> "loop"}}
-        {{/foreach}}
-    </div>
-
-</main>
+    </main>
 </div>

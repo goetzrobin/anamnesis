@@ -58,45 +58,37 @@
 }
 
 .main-post-feed {
-    padding: 12px;
     max-width: 1250px;
     margin: 0 auto 48px;
 }
 
-.item {
+.main-post-feed .item {
+    width: 100%;
+    max-width: 500px;
+}
+
+.feed-sizer,
+.feed-item {
+    width: 100%;
+}
+
+/* 2 columns */
+.feed-item--width2 {
     width: 100%;
 }
 
 @media (min-width: 767px) {
-    .main-post-feed {
-        display: flex;
-        flex-flow: column wrap;
-        align-content: space-between;
-        /* Your container needs a fixed height, and it
-         * needs to be taller than your tallest column. */
-        height: 1000px;
+
+    .feed-sizer,
+    .feed-item {
+        width: 33%;
     }
 
-    .item {
-        width: 32%;
-        margin-bottom: 2%; /* Optional */
-    }
-    /* Re-order items into 3 rows */
-    .item:nth-child(3n+1) { order: 1; }
-    .item:nth-child(3n+2) { order: 2; }
-    .item:nth-child(3n)   { order: 3; }
-
-    /* Force new columns */
-    .container::before,
-    .container::after {
-        content: "";
-        flex-basis: 100%;
-        width: 0;
-        order: 2;
+    /* 2 columns */
+    .feed-item--width2 {
+        width: 66%;
     }
 }
-
-
 .main-post-feed .post-title {
     padding: 0 12px;
 }

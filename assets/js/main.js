@@ -9,6 +9,7 @@ $(function () {
     parallax();
     loadMore();
     offCanvas();
+    feed();
 });
 
 window.addEventListener('scroll', function () {
@@ -129,4 +130,42 @@ function dimmer(action, speed) {
             dimmer.fadeOut(speed);
             break;
     }
+}
+
+function feed() {
+    'use strict';
+
+    var grid = document.querySelector('.main-post-feed');
+    if (!grid) return;
+    var masonry;
+
+    imagesLoaded(grid, function () {
+        console.log('initing masonry')
+        masonry = new Masonry(grid, {
+            // set itemSelector so .grid-sizer is not used in layout
+            itemSelector: '.feed-item',
+            // use element for option
+            columnWidth: '.feed-sizer',
+            percentPosition: true
+        })
+
+        masonry.on('layoutComplete', function () {
+            grid.classList.add('initialized');
+        });
+
+        masonry.layout();
+
+        function callback(items, loadNextPage) {
+            imagesLoaded(items, function (loaded) {
+                masonry.appended(items);
+                masonry.layout();
+                loaded.elements.forEach(function (item) {
+                    item.style.visibility = 'visible';
+                });
+                loadNextPage();
+            });
+        }
+
+        pagination(true, callback, true);
+    });
 }
