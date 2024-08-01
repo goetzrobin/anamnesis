@@ -135,7 +135,7 @@ function dimmer(action, speed) {
 function feed() {
     'use strict';
 
-    var grid = document.querySelector('.main-post-feed');
+    var grid = document.querySelector('.post-feed');
     if (!grid) return;
     var masonry;
 

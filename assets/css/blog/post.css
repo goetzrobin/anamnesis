@@ -69,6 +69,10 @@
     border-radius: 8px;
 }
 
+.post-content {
+    padding-bottom: 48px;
+}
+
 .post-excerpt {
     word-break: break-word;
 }
