@@ -1,67 +1,60 @@
-.post-feed {
-    margin: 0 auto;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.3s var(--animation-base);
-}
-
-.post-feed.initialized {
-    visibility: visible;
-    opacity: 1;
-}
-
-.post-feed .grid-item {
-    position: absolute;
-    width: 330px;
-}
-
 .post-feed .post {
-    position: relative;
-    margin: var(--grid-gap);
+    display: flex;
+    align-items: flex-start;
 }
 
-.post-feed .post-image {
-    width: 100%;
+.post-feed .post-media {
+    flex-shrink: 0;
+    width: 500px;
+    margin-right: 40px;
 }
 
-@media (max-width: 640px) {
-    .post-feed {
-        --grid-gap: 4px;
+.post-feed .post-meta {
+    margin-bottom: 10px;
+}
 
-        max-width: calc(100% - (calc(var(--gap) - var(--grid-gap))) * 2);
+.post-feed .post-title {
+    font-size: 28px;
+    letter-spacing: -0.5px;
+}
+
+@media (max-width: 767px) {
+    .post-feed .post {
+        display: block;
     }
 
-    .post-feed .grid-item {
-        width: 50%;
+    .post-feed .post-media {
+        width: auto;
+        margin-right: 0 !important;
+        margin-bottom: 30px;
+    }
+
+    .post-feed .post-header {
+        margin-bottom: 10px;
+    }
+
+    .post-feed .post-title {
+        font-size: 20px;
+        letter-spacing: 0;
+    }
+
+    .post-feed .post-footer {
+        margin-top: 15px;
     }
 }
 
-@media (min-width: 641px) and (max-width: 1019px) {
-    .post-feed {
-        --grid-gap: 8px;
-
-        max-width: calc(100% - (calc(var(--gap) - var(--grid-gap))) * 2);
+@media (min-width: 768px) and (max-width: 991px) {
+    .post-feed .post-media {
+        width: 250px;
+        margin-right: 30px;
     }
 
-    .post-feed .grid-item {
-        width: calc(100% / 3);
+    .post-feed .post-wrapper {
+        margin-top: 0;
     }
-}
 
-@media (min-width: 1020px) {
-    .post-feed {
-        max-width: 990px;
-    }
-}
-
-@media (min-width: 1350px) {
-    .post-feed {
-        max-width: 1320px;
-    }
-}
-
-@media (min-width: 1680px) {
-    .post-feed {
-        max-width: 1650px;
+    .post-feed .post-title {
+        font-size: 24px;
+        letter-spacing: 0;
     }
 }

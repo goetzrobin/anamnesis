@@ -1,0 +1,110 @@
+.tag {
+    position: relative;
+    z-index: 10;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+.tag::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    content: "";
+    background-color: rgba(0, 0, 0, 1);
+    opacity: 0.7;
+    transition: 0.4s opacity var(--animation-base);
+}
+
+.tag:hover::before {
+    opacity: .5;
+}
+
+.tag-content {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    opacity: 0; /* Fully transparent */
+    padding: 45px 45px 70px;
+    animation: slideUpFadeIn 300ms ease-in forwards;
+    animation-delay: 7s;
+}
+
+.tag-essere {
+    font-size: 2rem;
+    color: #fff;
+}
+
+.tag-content::before {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    height: 150%;
+    content: "";
+    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.75));
+    background-repeat: no-repeat;
+}
+
+.tag-name {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--white-color);
+    letter-spacing: -0.01em;
+    word-break: break-word;
+}
+
+
+.tag-name::before {
+    position: absolute;
+    bottom: -.5rem;
+    left: 0;
+    width: 0;
+    height: 3px;
+    margin-right: 0;
+    content: "";
+    background: var(--white-color);
+    transition: 0.4s var(--animation-base);
+    transition-property: margin-right, width;
+}
+
+.tag:hover .tag-name::before {
+    width: 100%;
+    margin-right: 10px;
+}
+
+.has-serif-title .tag-name {
+    font-family: var(--font-serif);
+}
+
+.tag-description {
+    margin-top: 12px;
+    font-size: 1.7rem;
+    line-height: 1.4;
+    color: var(--white-color);
+    word-break: break-word;
+    opacity: 0.7;
+}
+
+@media (max-width: 767px) {
+    .tag-content {
+        padding: 30px 30px 45px;
+    }
+
+    .tag-name {
+        font-size: 30px;
+    }
+}

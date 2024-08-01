@@ -1,138 +1,132 @@
+var html = $('html');
+var body = $('body');
+var timeout;
+var st = 0;
+
 $(function () {
     'use strict';
-    feed();
+    tagFeed();
+    parallax();
+    loadMore();
+    offCanvas();
 });
 
-function feed() {
+window.addEventListener('scroll', function () {
     'use strict';
-
-    var grid = document.querySelector('.post-feed');
-    if (!grid) return;
-    var masonry;
-
-    imagesLoaded(grid, function () {
-        masonry = new Masonry(grid, {
-            itemSelector: '.grid-item',
-            columnWidth: '.grid-sizer',
-            stamp: '.related-title',
-            hiddenStyle: {transform: 'translateY(50px)', opacity: 0},
-            visibleStyle: {transform: 'translateY(0)', opacity: 1},
-        });
-
-        masonry.on('layoutComplete', function () {
-            grid.classList.add('initialized');
-        });
-
-        masonry.layout();
-
-        function callback(items, loadNextPage) {
-            imagesLoaded(items, function (loaded) {
-                masonry.appended(items);
-                masonry.layout();
-                loaded.elements.forEach(function (item) {
-                    item.style.visibility = 'visible';
-                });
-                loadNextPage();
-            });
+    if (document.body.classList.contains('home-template')) {
+        if (timeout) {
+            window.cancelAnimationFrame(timeout);
         }
+        timeout = window.requestAnimationFrame(portalButton);
+    }
+});
 
-        pagination(true, callback, true);
-    });
+function portalButton() {
+    'use strict';
+    st = window.scrollY;
 
-    pswp(
-        '.post-feed',
-        '.post',
-        '.post-lightbox',
-        '.post-caption',
-        false
-    );
+    if (st > 100) {
+        document.body.classList.add('portal-visible');
+    } else {
+        document.body.classList.remove('portal-visible');
+    }
 }
 
-function pswp(container, element, trigger, caption, isGallery) {
-    var parseThumbnailElements = function (el) {
-        var items = [],
-            gridEl,
-            linkEl,
-            item;
+function tagFeed() {
+    'use strict';
+    var count = $('.tag-feed').attr('data-count');
 
-        $(el)
-            .find(element)
-            .each(function (i, v) {
-                gridEl = $(v);
-                linkEl = gridEl.find(trigger);
-
-                item = {
-                    src: isGallery
-                        ? gridEl.find('img').attr('src')
-                        : linkEl.attr('href'),
-                    w: 0,
-                    h: 0,
-                };
-
-                if (caption && gridEl.find(caption).length) {
-                    item.title = gridEl.find(caption).html();
-                }
-
-                items.push(item);
-            });
-
-        return items;
-    };
-
-    var openPhotoSwipe = function (index, galleryElement) {
-        var pswpElement = document.querySelectorAll('.pswp')[0],
-            gallery,
-            options,
-            items;
-
-        items = parseThumbnailElements(galleryElement);
-
-        options = {
-            closeOnScroll: false,
-            history: false,
-            index: index,
-            shareEl: false,
-            showAnimationDuration: 0,
-            showHideOpacity: true,
-        };
-
-        gallery = new PhotoSwipe(
-            pswpElement,
-            PhotoSwipeUI_Default,
-            items,
-            options
-        );
-        gallery.listen('gettingData', function (index, item) {
-            if (item.w < 1 || item.h < 1) {
-                // unknown size
-                var img = new Image();
-                img.onload = function () {
-                    // will get size after load
-                    item.w = this.width; // set image width
-                    item.h = this.height; // set image height
-                    gallery.updateSize(true); // reinit Items
-                };
-                img.src = item.src; // let's download image
-            }
-        });
-        gallery.init();
-    };
-
-    var onThumbnailsClick = function (e) {
-        e.preventDefault();
-
-        var index = $(e.target)
-            .closest(container)
-            .find(element)
-            .index($(e.target).closest(element));
-        var clickedGallery = $(e.target).closest(container);
-
-        openPhotoSwipe(index, clickedGallery[0]);
-
-        return false;
-    };
-
-    $(container).on('click', trigger, function (e) {
-        onThumbnailsClick(e);
+    $('.tag-feed').owlCarousel({
+        dots: false,
+        nav: true,
+        navText: [
+            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="currentColor"><path d="M26.667 14.667v2.667h-16l7.333 7.333-1.893 1.893-10.56-10.56 10.56-10.56 1.893 1.893-7.333 7.333h16z"></path></svg>',
+            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="currentColor"><path d="M5.333 14.667v2.667h16l-7.333 7.333 1.893 1.893 10.56-10.56-10.56-10.56-1.893 1.893 7.333 7.333h-16z"></path></svg>',
+        ],
+        responsive: {
+            0: {
+                items: 1,
+                slideBy: 1
+            },
+            1024: {
+                items: count > 1 ? 3 : count,
+                slideBy: count
+            },
+            1920: {
+                items: count > 2 ? 3 : count,
+                slideBy: count
+            },
+            2560: {
+                items: count > 3 ? 3 : count,
+                slideBy: count
+            },
+        }
     });
+}
+
+function parallax() {
+    var image = $('.jarallax-img');
+    if (!image) return;
+
+    var options = {
+        disableParallax: /iPad|iPhone|iPod|Android/,
+        disableVideo: /iPad|iPhone|iPod|Android/,
+        speed: 0.1,
+    };
+
+    image.imagesLoaded(function () {
+        image.parent().jarallax(options).addClass('initialized');
+    });
+}
+
+function loadMore() {
+    'use strict';
+    pagination(true);
+}
+
+function offCanvas() {
+    'use strict';
+    var burger = jQuery('.burger');
+    var canvasClose = jQuery('.canvas-close');
+
+    burger.on('click', function () {
+        html.toggleClass('canvas-opened');
+        html.addClass('canvas-visible');
+        dimmer('open', 'medium');
+    });
+
+    canvasClose.on('click', function () {
+        if (html.hasClass('canvas-opened')) {
+            html.removeClass('canvas-opened');
+            dimmer('close', 'medium');
+        }
+    });
+
+    jQuery('.dimmer').on('click', function () {
+        if (html.hasClass('canvas-opened')) {
+            html.removeClass('canvas-opened');
+            dimmer('close', 'medium');
+        }
+    });
+
+    jQuery(document).keyup(function (e) {
+        if (e.keyCode == 27 && html.hasClass('canvas-opened')) {
+            html.removeClass('canvas-opened');
+            dimmer('close', 'medium');
+        }
+    });
+}
+
+function dimmer(action, speed) {
+    'use strict';
+    var dimmer = jQuery('.dimmer');
+
+    switch (action) {
+        case 'open':
+            dimmer.fadeIn(speed);
+            break;
+        case 'close':
+            dimmer.fadeOut(speed);
+            break;
+    }
 }

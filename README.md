@@ -1,12 +1,12 @@
-# Edge
+# Dope
 
-A visually aesthetic [Ghost](https://github.com/TryGhost/Ghost) theme designed for creative professionals. Showcase your works with minimal style and presentation.
+A unique tag-based [Ghost](https://github.com/TryGhost/Ghost) theme to arrange your publications into collections. Keep organized and let your readers explore your publications with beautifully designed tag columns.
 
-**Demo: https://edge.ghost.io**
+**Demo: https://dope.ghost.io**
 
 # Instructions
 
-1. [Download this theme](https://github.com/TryGhost/Edge/archive/main.zip)
+1. [Download this theme](https://github.com/TryGhost/Dope/archive/main.zip)
 2. Log into Ghost, and go to the `Design` settings area to upload the zip file
 
 # Development
@@ -23,7 +23,7 @@ yarn dev
 
 Now you can edit `/assets/css/` files, which will be compiled to `/assets/built/` automatically.
 
-The `zip` Gulp task packages the theme files into `dist/edge.zip`, which you can then upload to your site.
+The `zip` Gulp task packages the theme files into `dist/dope.zip`, which you can then upload to your site.
 
 ```bash
 yarn zip

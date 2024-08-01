@@ -1,0 +1,59 @@
+@keyframes titleSlideFadeInOut {
+    0% {
+        transform: translateY(10%); /* Start off-screen (bottom) */
+        opacity: 0; /* Fully transparent */
+    }
+    20% {
+        transform: translateY(0); /* Slide in to its position */
+        opacity: 1; /* Fully visible */
+    }
+    80% {
+        transform: translateY(0); /* Hold position */
+        opacity: 1; /* Stay fully visible */
+    }
+    100% {
+        transform: translateY(-10%); /* Slide out to the top */
+        opacity: 0; /* Fully transparent */
+    }
+}
+
+@keyframes slideFadeInOut {
+    0% {
+        transform: translateY(100%); /* Start off-screen (bottom) */
+        opacity: 0; /* Fully transparent */
+    }
+    10% {
+        transform: translateY(0); /* Slide in to its position */
+        opacity: 1; /* Fully visible */
+    }
+    90% {
+        transform: translateY(0); /* Hold position */
+        opacity: 1; /* Stay fully visible */
+    }
+    100% {
+        transform: translateY(-100%); /* Slide out to the top */
+        opacity: 0; /* Fully transparent */
+    }
+}
+
+@keyframes slideUpFadeIn {
+    0% {
+        transform: translateY(20%); /* Start off-screen (bottom) */
+        opacity: 0; /* Fully transparent */
+    }
+    100% {
+        transform: translateY(0); /* Slide in to its position */
+        opacity: 1; /* Fully visible */
+    }
+}
+
+@keyframes slideDownFadeIn {
+    0% {
+        transform: translateY(-20%); /* Start off-screen (bottom) */
+        opacity: 0; /* Fully transparent */
+    }
+    100% {
+        transform: translateY(0); /* Slide in to its position */
+        opacity: 1; /* Fully visible */
+    }
+}

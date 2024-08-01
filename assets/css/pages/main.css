@@ -1,0 +1,65 @@
+.main-title {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin: -10rem auto 0;
+    z-index: 10;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    max-width: 1250px;
+    pointer-events: none;
+    font-family: var(--font-serif);
+    text-transform: uppercase;
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1;
+    animation: titleSlideFadeInOut 6s forwards; /* Adjust duration and timing as needed */
+}
+
+.main-description {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 10;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    font-size: 2.5rem;
+    max-width: 1250px;
+    pointer-events: none;
+    animation: slideFadeInOut 6s ease-in-out forwards; /* Adjust duration and timing as needed */
+}
+
+.main-intro {
+padding: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.main-intro-title {
+text-transform: uppercase;
+    font-size: 2rem;
+}
+.main-into-latest {
+    font-size: 4rem;
+}
+.main-post-feed {
+    padding: 12px;
+    max-width: 1250px;
+    columns: 300px 2;
+    margin: 0 auto 48px;
+}
+
+.main-post-feed .post-title {
+    padding: 0 12px;
+}
+
+.main-post-feed .post-excerpt {
+    padding: 0 12px;
+    font-family: var(--font-serif);
+}

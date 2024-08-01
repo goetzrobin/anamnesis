@@ -1,0 +1,41 @@
+.burger {
+    position: relative;
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    opacity: .8;
+    background-color: var(--white-color);
+    border: 2px solid var(--mid-gray-color);
+    transition: opacity 300ms ease;
+}
+.burger:hover {
+    opacity: 1;
+}
+
+.burger::before,
+.burger::after {
+    position: absolute;
+    left: 9px;
+    width: 12px;
+    height: 2px;
+    content: "";
+    background-color: var(--dark-gray-color);
+}
+
+.burger::before {
+    top: 11px;
+}
+
+.burger::after {
+    bottom: 11px;
+}
+
+.home-template .burger {
+    background-color: var(--dark-gray-color);
+    border: 2px solid var(--dark-gray-color);
+}
+.home-template .burger::after,.home-template .burger::before {
+    background-color: var(--mid-gray-color);
+}
