@@ -5,9 +5,14 @@
 }
 
 .post-feed .post-media {
+    margin: 0 auto;
     flex-shrink: 0;
-    width: 100%;
-    margin-right: 40px;
+    height: 300px;
+    width: 300px;
+}
+.post-feed .post-media .post-image {
+    height: 300px;
+    width: 300px;
 }
 
 .post-feed .post-meta {
