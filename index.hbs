@@ -5,7 +5,8 @@
         <h1 class="main-title">{{@site.title}}</h1>
         <p class="main-description">{{@site.description}}</p>
 
-        {{#get "tags" limit="all"}}
+        {{^is "paged"}}
+            {{#get "tags" limit="all"}}
             <div class="tag-feed owl" data-count="{{pagination.total}}">
 
                 {{#foreach tags}}
@@ -29,6 +30,7 @@
 
             </div>
         {{/get}}
+        {{#/is}}
 
         <div class="main-intro">
             <h2 class="main-intro-title">{{@site.title}}</h2>
