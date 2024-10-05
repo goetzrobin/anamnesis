@@ -44,3 +44,8 @@
         width: auto;
     }
 }
+
+.related-posts .post-media .post-image {
+    height: 300px;
+    width: 300px;
+}
