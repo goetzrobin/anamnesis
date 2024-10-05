@@ -5,9 +5,9 @@
         <h1 class="main-title">{{@site.title}}</h1>
         <p class="main-description">{{@site.description}}</p>
 
-        {{#is "home"}}
-            {{#get "tags" limit="all"}}
-            <div class="tag-feed owl" data-count="{{pagination.total}}">
+        {{#get "tags" limit="all"}}
+            {{#is "home"}}
+                <div class="tag-feed owl" data-count="{{pagination.total}}">
 
                 {{#foreach tags}}
                     <div class="tag u-placeholder">
@@ -29,8 +29,8 @@
                 {{/foreach}}
 
             </div>
+            {{/is}}
         {{/get}}
-        {{#/is}}
 
         <div class="main-intro">
             <h2 class="main-intro-title">{{@site.title}}</h2>
