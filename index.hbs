@@ -5,7 +5,7 @@
         <h1 class="main-title">{{@site.title}}</h1>
         <p class="main-description">{{@site.description}}</p>
 
-        {{^is "paged"}}
+        {{#is "home"}}
             {{#get "tags" limit="all"}}
             <div class="tag-feed owl" data-count="{{pagination.total}}">
 
