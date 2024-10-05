@@ -11,6 +11,7 @@
 @import "blog/tag.css";
 @import "blog/post.css";
 @import "blog/feed.css";
+@import "blog/pagination.css";
 @import "blog/single.css";
 @import "blog/author.css";
 @import "blog/related.css";
