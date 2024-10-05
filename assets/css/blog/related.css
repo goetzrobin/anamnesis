@@ -3,14 +3,18 @@
 }
 
 .related-posts .post {
+    display: flex;
+    width: 100%;
     margin-bottom: 30px;
 }
+
 
 .related-posts .post.featured {
     min-height: auto;
 }
 
 .related-posts .post-media {
+    flex-shrink: 0;
     width: 300px;
     margin-right: 30px;
 }
