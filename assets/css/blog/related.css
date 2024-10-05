@@ -41,10 +41,13 @@
 @media (max-width: 767px) {
     .related-posts .post {
         margin-bottom: 45px;
+        display: flex;
+        flex-direction: column;
     }
 
     .related-posts .post-media {
         width: auto;
+        min-height: 300px;
     }
 }
 
